@@ -1,0 +1,15 @@
+
+
+
+article
+{
+    border-left: 5px solid #f00;
+    margin: 20px 0px;
+    background: aliceblue;
+    padding: 0px 10px 10px 10px;
+}
+.info{color: #b2b3b4;}
+.interaction a{
+    padding: 0px 4px;
+    text-decoration: underline;
+}

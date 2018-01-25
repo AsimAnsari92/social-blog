@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" style="margin-top: 100px">
         @if(count($errors)>0)
             <div class="col-md-12">
                 <ul>
