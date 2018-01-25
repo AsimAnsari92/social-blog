@@ -50,7 +50,7 @@ Route::get('/', function () {
     ]);
 
     Route::post('/createpost', [
-        'uses' => 'PostController@Post',
+        'uses' => 'PostController@createpost',
         'as' => 'createpost',
 
     ]);
