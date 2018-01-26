@@ -30,6 +30,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
+    Route::get('/welcome', function () {
+        return view('welcome');
+    });
+
+
     Route::post('/signup', [
         'uses' => 'UserController@PostSignUp',
         'as' => 'signup'
@@ -43,10 +49,9 @@ Route::get('/', function () {
     ]);
 
     Route::get('/dashboard', [
-        'uses' => 'UserController@Dashboard',
+        'uses' => 'PostController@Dashboard',
         'as' => 'dashboard',
         'middleware' => 'auth'
-
     ]);
 
     Route::post('/createpost', [
@@ -54,6 +59,13 @@ Route::get('/', function () {
         'as' => 'createpost',
 
     ]);
+
+    Route::get('/logout', [
+        'uses' => 'UserController@logout',
+        'as' => 'logout',
+
+    ]);
+
 });
 
 

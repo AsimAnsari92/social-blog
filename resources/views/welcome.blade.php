@@ -6,17 +6,9 @@
 
 
 @section('content')
+    <div class="col-md-4">@include("includes/message-block")</div>
 
-    <div class="row" style="margin-top: 100px">
-        @if(count($errors)>0)
-            <div class="col-md-12">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    <div class="row mt-5">
         <div class="col-md-6">
             <h2>Sign Up</h2>
                <form action="{{ route('signup') }}" method="post">

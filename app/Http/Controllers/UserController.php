@@ -50,10 +50,11 @@ class UserController extends Controller
 	}
 
 
-    public  function Dashboard()
-    {
-        return view('dashboard');
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
     }
+
 }
 
 

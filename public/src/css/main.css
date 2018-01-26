@@ -13,3 +13,17 @@ article
     padding: 0px 4px;
     text-decoration: underline;
 }
+
+.error{
+     text-align: center;
+}
+.error ul{
+    list-style: none;
+     padding: 0 19px;margin: 0px;
+ }
+.success{
+    background: #30ee00;
+    color: #fff;
+    padding: 1px 16px;
+    border: 1px solid #ae9494;
+}
