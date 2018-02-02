@@ -57,7 +57,7 @@ Route::get('/', function () {
     Route::post('/createpost', [
         'uses' => 'PostController@createpost',
         'as' => 'createpost',
-
+        'middleware' => 'auth'
     ]);
 
     Route::get('/logout', [
@@ -65,8 +65,67 @@ Route::get('/', function () {
         'as' => 'logout',
 
     ]);
+    Route::get('/delete-post/{post_id}', [
+        'uses' => 'PostController@GetDeletePost',
+        'as' => 'delete-post',
+        'middleware' => 'auth'
+    ]);
+   /*   Route::post('/edit',function (\Illuminate\Http\Request $request){
+
+          return response()->json(['message'=>$request['postid']]);
+      })->name('edit');*/
+
+
+     Route::post('/edit', [
+         'uses' => 'PostController@updatePost',
+         'as' => 'edit'
+     ]);
+
+
+
+    Route::get('/account', [
+        'uses' => 'UserController@getaccount',
+        'as' => 'account',
+        'middleware' => 'auth'
+    ]);
+
+    Route::post('/updateaccount', [
+        'uses' => 'UserController@updateaccount',
+        'as' => 'account.save',
+    ]);
+
+    Route::get('userimage/{filename}',[
+
+        'uses' => 'UserController@GetUserImage',
+        'as' => 'account.image',
+    ]);
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

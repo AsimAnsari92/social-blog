@@ -24,14 +24,17 @@
 
                 <div class="row mt-5">
                     @foreach($posts as $post)
-                    <article class=" post col-md-12">
+                    <article class=" post col-md-12" data-postid="{{$post->id}}">
                          <p>{{$post->body}}</p>
                         <div class="info">Posted by {{$post->user->firstname}} on {{$post->created_at->format('M d Y')}}</div>
                         <div class="interaction">
                             <a href="#">Like</a> |
-                            <a href="#">Dislike</a>|
-                            <a href="#">Edit</a>|
-                            <a href="#">Delete</a>
+                            <a href="#">Dislike</a>
+                            @if(Auth::user() == $post->user)
+                                | <a href="#" class="edit">Edit</a>|
+                                <a href="{{ route('delete-post',['post_id'=>$post->id]) }}">Delete</a>
+                            @endif
+
                         </div>
                     </article>
                         @endforeach
@@ -43,5 +46,36 @@
         </div>
     </div>
 
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="editPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form >
+                        <div class="form-group">
+                    <textarea  class="form-control" id="post-body" name="post-body" rows="5"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="updatepost">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    var token = '{{Session::token()}}';
+    var url = '{{ route('edit')}}';
+</script>
 
 @endsection
